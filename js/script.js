@@ -34,7 +34,7 @@ window.addEventListener('DOMContentLoaded', function(){
     });
 
     //TIMER
-    let deadline = '2020-04-07';
+    let deadline = '2020-04-16';
     function getTimeRemaining(endtime){
         let t = Date.parse(endtime) - Date.parse(new Date()),
             seconds = Math.floor((t/1000) % 60),
@@ -91,4 +91,24 @@ window.addEventListener('DOMContentLoaded', function(){
     }
     
     setClock('timer', deadline);
+
+    //MODAL WINDOW
+    let more = document.querySelectorAll('.description-btn, .more'),
+        overlay = document.querySelector('.overlay'),
+        close = document.querySelector('.popup-close');
+
+    more.forEach(btn => btn.addEventListener('click', function(){
+            overlay.style.display = 'block';
+            btn.classList.add('more-spash');
+            document.body.style.overflow = "hidden";
+        }));
+
+    close.addEventListener('click', function(){
+        overlay.style.display = 'none';
+        document.querySelector('.more-spash').remove('more-spash');
+        document.body.style.overflow = "";
+    });
+
+    //MORE INFORMATION
+
 });
